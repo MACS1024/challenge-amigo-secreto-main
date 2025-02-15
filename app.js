@@ -11,9 +11,6 @@ function limpiarValor(){
     document.querySelector("#amigo").value = "";
 }
 
-asignarTextoElemento("h1", "Amigo Secreto!");
-asignarTextoElemento("h2", "Escribe el nombre de tus amigos :)");
-
 function agregarAmigo(){
     let nombreAmigo = document.getElementById("amigo").value;
 
@@ -22,6 +19,23 @@ function agregarAmigo(){
     }else{
         amigos.push(nombreAmigo);
         limpiarValor();
-        console.log(amigos);
     }
 }
+
+function actualizarLista() {
+    //1.- Obtener el elemento de la lista
+    let lista = document.getElementById("listaAmigos");
+    //2.- Limpiar la lista existente para evitar duplicados
+    lista.innerHTML = "";
+
+    for(let i = 0; i < amigos.leghth; i ++){
+        // 4. Crear un nuevo elemento <li> para cada amigo
+        const li = document.createElement('li');
+        li.textContent = amigos[i]; // Asigna el nombre del amigo
+        li.appendChild(li);
+    }
+}
+
+asignarTextoElemento("h1", "Amigo Secreto!");
+asignarTextoElemento("h2", "Escribe el nombre de tus amigos :)");
+actualizarLista();
