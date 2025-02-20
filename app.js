@@ -12,11 +12,12 @@ function actualizarLista() {
     let listaAmigos = document.getElementById("listaAmigos");
     //2.- Limpiar la lista existente para evitar duplicados
     listaAmigos.innerHTML = "";
-
-    for(let i = 0; i < amigos.leghth; i ++){
-        // 4. Crear un nuevo elemento <li> para cada amigo
+    //3.- Recorrer el arreglo de amigos
+    
+    for(let i = 0; i < amigos.length; i++){
+        //4.- Crear un nuevo elemento <li> para cada amigo
         const li = document.createElement("li");
-        li.textContent = amigos[i]; // Asigna el nombre del amigo
+        li.textContent = amigos[i]; //Asigna el nombre del amigo
         listaAmigos.appendChild(li);
     }
 }
@@ -46,15 +47,18 @@ function agregarAmigo(){
 }
 
 function sortearAmigo() {
-    let numeroGenerado = Math.ceil(Math.random()*amigos.length);
+    let numeroGenerado = Math.floor(Math.random()*amigos.length);
 
-    console.log(amigos[numeroGenerado]);
+    
     if (amigos == ""){
-        asignarTextoElemento("h2","No hay amigos para sortear :c");
+        alert("Porfavor, ingrese un nombre antes de sortear");
+        return
     }
 
     let resultado = document.getElementById("resultado");
+    listaAmigos.innerHTML = "";
     resultado.innerHTML = `El amigo sorteado es ${amigos[numeroGenerado]}`;
+    amigos = [];
 }
 
 asignarTextoElemento("h1", "Amigo Secreto!");
